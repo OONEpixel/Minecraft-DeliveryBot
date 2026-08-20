@@ -1,0 +1,55 @@
+# 已绑定的 Leaves 假人名称。第一次可使用 /deliverybot create <名称>，
+# 或先用 Leaves /bot create 创建，再执行 /deliverybot bind <名称>。
+bot:
+  name: DeliveryBot
+
+request:
+  prefixes:
+    - "机器人"
+    - "@快递员"
+  # 每个订单条目换算后的最大数量；多物品订单还受机器人 35 格货舱总容量限制。
+  max-amount: 2304
+  # “一盒石头”按 27 个完整堆叠计算；可按服务器盒装习惯调整。
+  box-slots: 27
+  cooldown-seconds: 5
+
+warehouse:
+  scan-radius: 32
+  workstation-radius: 16
+  # /deliverybot warehouse scan [半径] 的默认半径与管理员可输入的上限。
+  bulk-register-radius: 12
+  bulk-register-max-radius: 24
+  allowed-containers:
+    - CHEST
+    - TRAPPED_CHEST
+    - BARREL
+    - SHULKER_BOX
+
+movement:
+  # 目标不超过此距离、且高度差较小时优先步行；遇到危险或卡住会自动改为飞行。
+  walk-max-distance: 14.0
+  walk-max-height-difference: 3.0
+  walk-speed: 0.23
+  walk-timeout-ticks: 400
+
+flight:
+  speed: 1.15
+  cruise-height: 12.0
+  arrival-distance: 1.8
+  # 接近目标水平 6 格内时退出鞘翅，改用受控三维速度完成大高度差升降和精准停靠。
+  precision-approach-horizontal-distance: 6.0
+  precision-approach-speed: 0.55
+  timeout-ticks: 1200
+  boost-interval-ticks: 30
+  teleport-home-on-failure: true
+
+crafting:
+  # 递归合成中间材料的最大层数，同时用于阻止循环配方。
+  max-depth: 6
+  animation-ticks: 20
+
+delivery:
+  drop-interval-ticks: 4
+  # 机器人停在玩家约 3 格外，面向玩家并定向丢出物品。
+  drop-distance: 3.0
+  position-tolerance: 0.65

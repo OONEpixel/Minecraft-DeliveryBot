@@ -1,0 +1,22 @@
+name: DeliveryBot
+version: '${version}'
+description: A Leaves fake-player powered warehouse delivery robot.
+main: com.haishihua.deliverybot.DeliveryBotPlugin
+api-version: '1.21'
+load: POSTWORLD
+authors: [haishihua]
+
+commands:
+  deliverybot:
+    description: 管理取货机器人
+    usage: /deliverybot help
+    aliases: [dbot, 快递机器人]
+    permission: deliverybot.admin
+
+permissions:
+  deliverybot.request:
+    description: 允许通过聊天请求机器人配送
+    default: true
+  deliverybot.admin:
+    description: 允许管理机器人和仓库
+    default: op

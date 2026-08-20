@@ -1,0 +1,18 @@
+# 自动加载随插件提供的 Minecraft 1.21 官方简体中文物品名称。
+# 例如：白色潜影盒、深板岩圆石楼梯、下界合金锭、烟花火箭。
+include-vanilla-zh-cn: true
+
+# 这里用于补充简称、口语名称或服务器自定义叫法。自定义项优先于官方名称。
+aliases:
+  石砖半砖: STONE_BRICK_SLAB
+  半砖: STONE_SLAB
+  木头: OAK_LOG
+  木板: OAK_PLANKS
+  铁: IRON_INGOT
+  金: GOLD_INGOT
+  红石粉: REDSTONE
+  烟花: FIREWORK_ROCKET
+  火箭: FIREWORK_ROCKET
+  白盒: WHITE_SHULKER_BOX
+  潜影箱: SHULKER_BOX
+  合金锭: NETHERITE_INGOT
