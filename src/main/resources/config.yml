@@ -42,6 +42,10 @@ flight:
   timeout-ticks: 1200
   boost-interval-ticks: 30
   teleport-home-on-failure: true
+  landing-water:
+    # 长距离下落且预计即将硬着陆时，临时放水并在接触/任务结束后回收。
+    enabled: true
+    trigger-fall-distance: 10.0
 
 crafting:
   # 递归合成中间材料的最大层数，同时用于阻止循环配方。

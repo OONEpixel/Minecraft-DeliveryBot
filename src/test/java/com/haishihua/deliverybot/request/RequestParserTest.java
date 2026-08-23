@@ -42,6 +42,8 @@ class RequestParserTest {
                 1200,
                 30,
                 true,
+                true,
+                10,
                 6,
                 20,
                 4,

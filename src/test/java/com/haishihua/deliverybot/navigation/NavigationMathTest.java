@@ -37,4 +37,20 @@ class NavigationMathTest {
         assertTrue(NavigationMath.shouldDirectlyDescend(158, 34, 1.8));
         assertFalse(NavigationMath.shouldDirectlyDescend(34, 158, 1.8));
     }
+
+    @Test
+    void boostsWhenLongRouteIsSlowOrClimbingButNotWhileDiving() {
+        assertTrue(NavigationMath.shouldBoost(80, 0.45, 0.0, 40, 30));
+        assertTrue(NavigationMath.shouldBoost(80, 0.9, 0.3, 40, 30));
+        assertFalse(NavigationMath.shouldBoost(80, 0.45, -0.3, 40, 30));
+        assertFalse(NavigationMath.shouldBoost(8, 0.2, 0.2, 40, 30));
+    }
+
+    @Test
+    void landingWaterRequiresARealHighSpeedHardLanding() {
+        assertTrue(NavigationMath.shouldUseLandingWater(true, false, 14, -0.5, 2.5, 10));
+        assertFalse(NavigationMath.shouldUseLandingWater(true, true, 14, -0.5, 2.5, 10));
+        assertFalse(NavigationMath.shouldUseLandingWater(true, false, 4, -0.5, 2.5, 10));
+        assertFalse(NavigationMath.shouldUseLandingWater(true, false, 14, -0.2, 2.5, 10));
+    }
 }

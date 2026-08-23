@@ -10,6 +10,35 @@ public final class NavigationMath {
         return targetY + arrivalDistance < currentY;
     }
 
+    public static boolean shouldBoost(
+            double distance,
+            double horizontalSpeed,
+            double targetVerticalDirection,
+            int ticksSinceBoost,
+            int minimumInterval
+    ) {
+        if (distance < 12.0 || targetVerticalDirection < -0.15 || ticksSinceBoost < minimumInterval) {
+            return false;
+        }
+        return horizontalSpeed < 0.72 || targetVerticalDirection > 0.12;
+    }
+
+    public static boolean shouldUseLandingWater(
+            boolean enabled,
+            boolean nether,
+            double descendedDistance,
+            double verticalVelocity,
+            double groundDistance,
+            double triggerFallDistance
+    ) {
+        return enabled
+                && !nether
+                && descendedDistance >= triggerFallDistance
+                && verticalVelocity <= -0.42
+                && groundDistance > 0.4
+                && groundDistance <= 3.25;
+    }
+
     public static Vector precisionVelocity(Vector delta, double horizontalSpeedLimit, double verticalSpeedLimit) {
         Vector horizontal = delta.clone().setY(0);
         double horizontalDistance = horizontal.length();
